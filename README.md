@@ -25,6 +25,7 @@ Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 - [phpBB3](configs/phpbb3.conf)
 - [ProcessWire 2](configs/processwire-2.conf)
 - [Symfony](configs/symfony.conf)
+- [UMI.CMS](configs/umi-cms.conf)
 - [Wordpress 4](configs/wordpress-4.conf)
 - [Yii Advanced](configs/yii-advanced.conf)
 - [Yii Basic](configs/yii-basic.conf)
