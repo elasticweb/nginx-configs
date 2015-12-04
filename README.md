@@ -8,6 +8,7 @@ Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 - [Bolt CMS](configs/bolt-cms.conf)
 - [CMS Made Simple](configs/cms-made-simple.conf)
 - [Codeigniter](configs/codeigniter.conf)
+- [Concerte5](configs/concerte5.conf)
 - [Data Life Engine](configs/data-life-engine.conf)
 - [Drupal 7, 8](configs/drupal-7-8.conf)
 - [FuelPHP](configs/fuelphp.conf)
