@@ -1048,7 +1048,6 @@ location ~ ^/app\.php(/|$) {
 location ~ /\. {
   deny all;
 }
-
 ```
 
 ###Wordpress 4
