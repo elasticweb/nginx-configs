@@ -12,6 +12,7 @@ Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 - [Data Life Engine](configs/data-life-engine.conf)
 - [Drupal 7, 8](configs/drupal-7-8.conf)
 - [FuelPHP](configs/fuelphp.conf)
+- [Invision Power Board 3](configs/ipb3.conf)
 - [Joomla 2, 3](configs/joomla-2-3.conf)
 - [KodiCMS](configs/kodicms.conf)
 - [Kohana](configs/kohana.conf)
