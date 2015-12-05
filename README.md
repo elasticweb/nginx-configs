@@ -107,8 +107,8 @@ location ~ \.php$ {
   fastcgi_pass unix:/var/run/php5-example.com.sock;
 }
 
-  location ~ /\. {
-deny all;
+location ~ /\. {
+  deny all;
 }
 
 location /app {
