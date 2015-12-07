@@ -28,6 +28,7 @@ Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 - [Yii Basic](#yii-basic)
 - [ZenCart 1.5](#zencart-15)
 - [Zend Framework](#zend-framework)
+- [UMI.CMS](#umi)
 
 
 ###Asgard CMS
@@ -1284,5 +1285,112 @@ location ~ /\.git {
 
 location ~ /\.hg {
   deny all;
+}
+```
+
+###UMI.CMS
+
+```
+server {
+	listen 80;
+	server_name www.site.ru ;
+	rewrite ^ http://site.ru$request_uri? permanent;
+}
+
+server {
+	listen 80;
+	server_name site.ru;
+	root /var/www/site.ru;
+
+	client_max_body_size 25m;
+
+	access_log /var/www/logs/site.ru-access.log;
+	error_log /var/www/logs/site.ru-error.log;
+
+	auth_basic on;
+
+	gzip on; 	
+	gzip_comp_level 5;
+	gzip_types text/plain text/css application/x-javascript application/json text/xml application/xml application/xml+rss text/javascript application/javascript;
+	location ~* ^.+\.(jpg|jpeg|gif|png|svg|js|css|mp3|ogg|mpe?g|avi|zip|gz|bz2?|rar|swf|ttf)$ {
+		access_log off;
+		expires max ;
+	}
+
+	location ~* \/\.ht {
+		deny all;
+	}
+
+	location ~* ^\/(classes|errors\/logs|sys\-temp|cache|xmldb|static|packages) {
+		deny all;
+	}
+
+	location ~* (\/for_del_connector\.php|\.ini|\.conf)$ {
+		deny all;
+	}
+
+	location ~* ^(\/files\/|\/images\/|\/yml\/) {
+		try_files $uri =404;
+	}
+
+	location ~* ^\/images\/autothumbs\/ {
+		try_files $uri @autothumbs =404;
+	}
+
+	location @autothumbs {
+		rewrite ^\/images\/autothumbs\/(.*)$ /autothumbs.php?img=$1$query_string last;
+	}
+
+	location @clean_url {
+		rewrite ^/(.*)$ /index.php?path=$1 last;
+	}
+
+	location @dynamic {
+		try_files $uri @clean_url;
+	}
+
+	location \/yml\/files\/ {
+		try_files $uri =404;
+	}
+
+	location / {
+		rewrite ^\/robots\.txt /sbots_custom.php?path=$1 last;
+		rewrite ^\/sitemap\.xml /sitemap.php last;
+		rewrite ^\/\~\/([0-9]+)$ /tinyurl.php?id=$1 last;
+		rewrite ^\/(udata|upage|uobject|ufs|usel|ulang|utype|umess|uhttp):?(\/\/)?(.*)? /releaseStreams.php?scheme=$1&path=$3 last;
+		rewrite ^\/(.*)\.xml$ /index.php?xmlMode=force&path=$1 last;
+		rewrite ^(.*)\.json$ /index.php?jsonMode=force&path=$1 last;
+		if ($cookie_umicms_session) {
+			error_page 412 = @dynamic;
+			return 412;
+		}
+		if ($request_method = 'POST') {
+			error_page 412 = @dynamic;
+			return 412;
+		}
+		index index.php;
+		try_files $uri @dynamic;
+	}
+
+	location ~* \.js$ {
+		rewrite ^\/(udata|upage|uobject|ufs|usel|ulang|utype|umess|uhttp):?(\/\/)?(.*)? /releaseStreams.php?scheme=$1&path=$3 last;
+		try_files $uri =404;
+	}
+
+	location ~* \.(ico|jpg|jpeg|png|gif|swf|css|ttf)$ {
+		try_files $uri =404;
+		access_log off;
+		expires 24h;
+	}
+
+	location ~* \.php$ {
+		fastcgi_pass unix:/var/run/php5-fpm.www.sock;
+		fastcgi_read_timeout 3600;
+		fastcgi_buffers 16 16k;
+		fastcgi_buffer_size 32k;
+		expires -1;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include /etc/nginx/fastcgi_params;
+	}
 }
 ```
