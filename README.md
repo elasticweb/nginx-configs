@@ -31,3 +31,4 @@ Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 - [Yii Basic](configs/yii-basic.conf)
 - [ZenCart 1.5](configs/zencart-15.conf)
 - [Zend Framework](configs/zend-framework.conf)
+- [1C Bitrix](configs/1c-bitrix.conf)
