@@ -22,6 +22,7 @@ Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 - [MODx Revolution](configs/modx-revolution.conf)
 - [Octobercms](configs/octobercms.conf)
 - [OpenCart 1.5](configs/opencart-15.conf)
+- [Phalcon](configs/phalcon.conf)
 - [phpBB3](configs/phpbb3.conf)
 - [ProcessWire 2](configs/processwire-2.conf)
 - [Symfony](configs/symfony.conf)
