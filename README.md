@@ -31,6 +31,7 @@ Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 - [Phalcon](configs/phalcon.conf)
 - [phpBB3](configs/phpbb3.conf)
 - [ProcessWire 2](configs/processwire-2.conf)
+- [Subrion CMS](configs/subrion.conf)
 - [Symfony](configs/symfony.conf)
 - [UMI.CMS](configs/umi-cms.conf)
 - [WebAsyst](configs/webasyst.conf)
