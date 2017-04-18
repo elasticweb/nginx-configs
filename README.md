@@ -1,8 +1,8 @@
-#Nginx Configs
+# Nginx Configs
 
 Collection of Nginx configs for most popular CMS/CMF/Frameworks based on PHP.
 
-##Table of Contents
+## Table of Contents
 
 - [Asgard CMS](configs/asgard-cms.conf)
 - [Bolt CMS](configs/bolt-cms.conf)
